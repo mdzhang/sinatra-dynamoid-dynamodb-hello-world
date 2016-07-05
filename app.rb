@@ -13,7 +13,7 @@ Dynamoid.configure do |config|
   config.warn_on_scan = true
   config.read_capacity = 5
   config.write_capacity = 5
-  config.endpoint = 'http://localhost:8000'
+  config.endpoint = "http://#{ENV['DOCKER_HOST_IP']}:8000"
 end
 
 class StockKeepingUnit

@@ -1,0 +1,6 @@
+FROM library/java:7-jre
+MAINTAINER Michelle D. Zhang <zhang.michelle.d@gmail.com>
+
+RUN /usr/bin/curl -L http://dynamodb-local.s3-website-us-west-2.amazonaws.com/dynamodb_local_latest | /bin/tar xz
+
+CMD ["java", "-Djava.library.path=./DynamoDBLocal_lib", "-jar", "DynamoDBLocal.jar", "-sharedDb"]
