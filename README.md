@@ -19,6 +19,7 @@ A simple Hello World app that connects [Sinatra](sinatrarb.com) to [DynamoDB](ht
     cd ~/Code
     git clone git@github.com:mdzhang/sinatra-dynamoid-dynamodb-hello-world.git
     cd sinatra-dynamoid-dynamodb-hello-world
+    cp config/environment/sample.yml config/environment/development.yml
     ```
 
 - configure application
@@ -116,6 +117,7 @@ This repo is known to work with
     cd ~/Code
     git clone git@github.com:mdzhang/sinatra-dynamoid-dynamodb-hello-world.git
     cd sinatra-dynamoid-dynamodb-hello-world
+    cp config/environment/sample.yml config/environment/development.yml
     ```
 
 - run project

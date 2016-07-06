@@ -1,0 +1,3 @@
+AccessKeyId: 'ACCESS_KEY_ID'
+SecretAccessKey: 'SECRET_ACCESS_KEY'
+UseDynamoDBLocal: true

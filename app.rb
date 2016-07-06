@@ -1,10 +1,17 @@
 require 'sinatra'
+require 'sinatra/config_file'
 require 'aws-sdk'
 require 'dynamoid'
 
+ENV['RACK_ENV'] = 'development'
+
+config_file "./config/environment/#{ENV['RACK_ENV']}.yml"
+
 Aws.config.update({
   region: 'us-west-2',
-  credentials: Aws::Credentials.new('ACCESS_KEY_ID', 'SECRET_ACCESS_KEY')
+    settings.UseDynamoDBLocal ? 'ACCESS_KEY_ID' : settings.AccessKeyId,
+    settings.UseDynamoDBLocal ? 'SECRET_ACCESS_KEY' : settings.SecretAccessKey
+  )
 })
 
 Dynamoid.configure do |config|
@@ -13,7 +20,7 @@ Dynamoid.configure do |config|
   config.warn_on_scan = true
   config.read_capacity = 5
   config.write_capacity = 5
-  config.endpoint = "http://#{ENV['DOCKER_HOST_IP']}:8000"
+  config.endpoint = "http://#{ENV['DOCKER_HOST_IP']}:8000" if settings.UseDynamoDBLocal
 end
 
 class StockKeepingUnit
